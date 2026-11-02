@@ -141,6 +141,6 @@ setInterval(() => {
   }
 }, roomIdleTimeout).unref();
 
-app.listen(port, '127.0.0.1', () => {
-  console.log(`Mole Hunt running at http://molehunt.localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Mole Hunt listening on port ${port}`);
 });

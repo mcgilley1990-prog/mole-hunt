@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: mole-hunt
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
