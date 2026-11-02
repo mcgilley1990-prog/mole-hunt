@@ -186,6 +186,11 @@ app.post('/api/rooms/:code/join', (request, response) => {
     return response.status(404).json({ error: 'Room not found. Check the code or create a new room.' });
   }
 
+  updateRoundStatus(room);
+  if (room.round && ['playing', 'voting'].includes(room.round.status)) {
+    return response.status(409).json({ error: 'A round is already active. Join after the debrief.' });
+  }
+
   const name = normalizePlayerName(request.body?.name);
   if (!name) return response.status(400).json({ error: 'Enter an agent name to join.' });
   pruneInactivePlayers(room);
