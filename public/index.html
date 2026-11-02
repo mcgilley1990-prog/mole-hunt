@@ -97,27 +97,15 @@
     .room-member { display: flex; justify-content: space-between; gap: 8px; min-width: 0; color: var(--dim); font-size: 9px; }
     .room-member strong { overflow: hidden; color: var(--ink); font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
     .room-full { color: var(--orange); }
-    .setup-columns { display: grid; grid-template-columns: minmax(220px, .75fr) minmax(0, 1.25fr); gap: 22px; }
     .section-label { margin: 0 0 12px; color: var(--muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
-    .roster { display: grid; gap: 7px; }
-    .player-row { display: grid; grid-template-columns: 25px minmax(0, 1fr) 30px; gap: 8px; align-items: center; }
-    .player-number { color: var(--dim); font-size: 10px; }
-    .player-name {
-      min-width: 0; width: 100%; padding: 9px 10px; color: var(--ink);
-      border: 1px solid var(--line); border-radius: 2px; background: #141711;
-    }
     .icon-button, .quiet-button, .primary-button, .danger-button {
       min-height: 36px; border: 1px solid var(--line); border-radius: 2px;
       background: transparent; cursor: pointer; transition: background .16s ease, border-color .16s ease, color .16s ease;
     }
     .icon-button { width: 30px; color: var(--dim); font-size: 17px; line-height: 1; }
     .icon-button:hover, .quiet-button:hover { border-color: var(--muted); color: var(--ink); background: rgba(255,255,255,.035); }
-    .add-player { margin-top: 10px; padding: 0; color: var(--lime); border: 0; background: none; cursor: pointer; font-size: 10px; letter-spacing: .5px; }
-    .add-player:disabled { color: var(--dim); cursor: not-allowed; }
-    .roster-meta { margin-top: 12px; color: var(--dim); font-size: 10px; }
     .locations-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
     .quiet-button { min-height: 29px; padding: 0 9px; color: var(--muted); font-size: 10px; }
-    .location-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
     .location-tile {
       position: relative; min-height: 54px; padding: 9px 9px 8px; overflow: hidden;
       border: 1px solid #343b30; border-radius: 2px; background: #151913;
@@ -146,15 +134,6 @@
     .team-list { display: grid; gap: 9px; }
     .team-line { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 10px; }
     .team-line strong { color: var(--ink); font-weight: 500; }
-    .media-box { position: relative; min-height: 128px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); background: #11140f; }
-    .media-box video { width: 100%; height: 168px; object-fit: cover; transform: scaleX(-1); }
-    .camera-placeholder { color: var(--dim); text-align: center; font-size: 9px; line-height: 1.8; }
-    .camera-crosshair { display: grid; place-items: center; width: 42px; aspect-ratio: 1; margin: 0 auto 8px; color: var(--lime); border: 1px solid #4d583c; border-radius: 50%; font-size: 13px; }
-    .media-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 9px; }
-    .media-actions button { min-height: 33px; padding: 0 6px; font-size: 9px; }
-    .media-note { margin: 10px 0 0; color: var(--dim); font-size: 9px; line-height: 1.55; }
-    .permission-status { margin-top: 8px; color: var(--muted); font-size: 9px; }
-
     .round-content { padding: 20px; }
     .round-topline { display: flex; justify-content: space-between; align-items: start; gap: 16px; margin-bottom: 19px; }
     .round-headline { margin: 5px 0 0; font: 700 31px/1 var(--display); text-transform: uppercase; }
@@ -163,20 +142,6 @@
     .round-clock .timer-caption { margin: 5px 0 0; }
     .game-board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; padding: 13px; border: 1px solid var(--line); background: #141711; }
     .game-board .location-tile { min-height: 48px; }
-    .envelope-heading { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin: 21px 0 11px; }
-    .envelope-heading .section-label { margin: 0; }
-    .envelope-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
-    .envelope {
-      position: relative; min-height: 103px; padding: 12px 8px 10px; overflow: hidden;
-      border: 1px solid #596147; border-radius: 2px; background: linear-gradient(155deg, #343a2c, #22271e 60%, #1c2019);
-      cursor: pointer; text-align: left; transition: transform .18s ease, border-color .18s ease;
-    }
-    .envelope:hover { transform: translateY(-2px); border-color: var(--lime); }
-    .envelope::before { content: ''; position: absolute; top: -25px; left: -12px; width: 120%; height: 50px; border-bottom: 1px solid rgba(211,243,107,.27); background: rgba(211,243,107,.035); transform: rotate(12deg); }
-    .envelope-number { display: block; position: relative; color: var(--lime); font-size: 9px; }
-    .envelope-name { display: block; position: relative; margin-top: 18px; overflow-wrap: anywhere; font: 600 17px/1 var(--display); text-transform: uppercase; }
-    .envelope-state { display: block; position: relative; margin-top: 6px; color: var(--dim); font-size: 8px; text-transform: uppercase; }
-    .envelope.is-open { border-color: var(--orange); background: #252319; }
     .role-reveal { display: none; margin-top: 8px; padding: 10px; border-left: 2px solid var(--orange); background: rgba(232,149,92,.08); }
     .role-reveal.is-visible { display: block; animation: reveal-in .22s ease-out both; }
     .role-title { color: var(--orange); font: 700 19px/1 var(--display); text-transform: uppercase; }
@@ -191,8 +156,10 @@
     .result-title { color: var(--lime); font: 700 25px/1 var(--display); text-transform: uppercase; }
     .result-detail { margin-top: 8px; color: var(--muted); font-size: 11px; line-height: 1.6; }
     .result-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
-    .accuse-row { display: flex; gap: 7px; flex-wrap: wrap; }
-    .accuse-select { min-height: 38px; padding: 0 10px; color: var(--ink); border: 1px solid var(--line); border-radius: 2px; background: #141711; }
+    .vote-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); gap: 7px; margin-top: 13px; }
+    .vote-option { min-width: 0; min-height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; color: var(--muted); border: 1px solid var(--line); border-radius: 2px; background: #141711; cursor: pointer; text-align: left; font-size: 10px; }
+    .vote-option:hover, .vote-option.is-selected { color: var(--lime); border-color: var(--lime); background: rgba(211,243,107,.06); }
+    .vote-count { flex: 0 0 auto; color: var(--dim); font-size: 9px; }
 
     dialog { width: min(540px, calc(100vw - 28px)); max-height: 85vh; padding: 0; color: var(--ink); border: 1px solid #596147; border-radius: 2px; background: #191d17; box-shadow: 0 28px 90px rgba(0,0,0,.7); }
     dialog::backdrop { background: rgba(5, 7, 5, .82); backdrop-filter: blur(4px); }
@@ -210,9 +177,6 @@
     @media (max-width: 900px) {
       .shell { padding: 0 20px 30px; }
       .dashboard { grid-template-columns: minmax(0, 1fr) 270px; }
-      .setup-columns { grid-template-columns: 1fr; }
-      .roster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .player-row { grid-template-columns: 20px minmax(0, 1fr) 28px; }
       .room-controls { grid-template-columns: minmax(110px, 1fr) auto; }
       .room-or { display: none; }
       .room-code-input { grid-column: 1; }
@@ -227,29 +191,19 @@
       .side-panel { display: grid; grid-template-columns: 1fr 1fr; }
       .side-section { border-right: 1px solid var(--line); }
       .side-section:nth-child(2) { border-right: 0; }
-      .media-section { grid-column: 1 / -1; border-top: 1px solid var(--line); border-right: 0; }
-      .media-box { min-height: 110px; }
       .setup-content, .round-content { padding: 14px; }
-      .location-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .game-board { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 8px; }
-      .envelope-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .envelope { min-height: 94px; }
     }
     @media (max-width: 420px) {
       .side-panel { grid-template-columns: 1fr; }
       .side-section { border-right: 0; }
-      .media-section { grid-column: auto; border-top: 0; }
       .intro-note { display: none; }
-      .setup-columns { gap: 19px; }
-      .roster { grid-template-columns: 1fr; }
       .online-room { padding: 11px; }
       .room-controls { grid-template-columns: minmax(0, 1fr) auto; }
       .room-session-line { align-items: start; flex-direction: column; }
       .room-roster { grid-template-columns: 1fr; }
-      .location-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .location-tile { min-height: 50px; }
       .game-board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .envelope-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .setup-footer { align-items: stretch; flex-direction: column; }
       .setup-footer .primary-button { width: 100%; }
       .round-topline { gap: 8px; }
@@ -301,7 +255,7 @@
               <input class="room-code-input" id="roomCodeInput" type="text" maxlength="6" placeholder="ROOM CODE" autocomplete="off" spellcheck="false">
               <button class="quiet-button" id="joinRoom" type="button">Join</button>
             </div>
-            <div class="room-message" id="roomMessage" role="status">Room codes sync the lobby roster. Game rounds remain pass-and-play in this build.</div>
+            <div class="room-message" id="roomMessage" role="status">Create a room and share its code. Each player joins on their own device.</div>
             <div class="room-session" id="roomSession" hidden>
               <div class="room-session-line">
                 <div class="room-session-code">ROOM CODE <strong id="roomCodeDisplay"></strong></div>
@@ -310,27 +264,9 @@
               <div class="room-roster" id="roomRoster" aria-label="Online room roster"></div>
             </div>
           </section>
-          <div class="setup-columns">
-            <section>
-              <div class="locations-head">
-                <h2 class="section-label">Pass-and-play team <span id="rosterCount">03 / 10</span></h2>
-              </div>
-              <div class="roster" id="roster"></div>
-              <button class="add-player" id="addPlayer" type="button">+ ADD AGENT</button>
-              <div class="roster-meta">Local envelopes use this roster. Online rooms are shown separately above.</div>
-            </section>
-
-            <section>
-              <div class="locations-head">
-                <h2 class="section-label">Possible drop sites <span>12 OF 60</span></h2>
-                <button class="quiet-button" id="shuffleLocations" type="button">Shuffle sites</button>
-              </div>
-              <div class="location-grid" id="lobbyLocations" aria-label="Randomly selected location choices"></div>
-            </section>
-          </div>
           <div class="setup-footer">
-            <div class="setup-footnote">ROUND CLOCK <span id="roundLength">03:00</span> / one minute per agent</div>
-            <button class="primary-button" id="startMission" type="button">Deal envelopes <span aria-hidden="true">&nbsp;→</span></button>
+            <div class="setup-footnote">ROUND CLOCK <span id="roundLength">00:00</span> / 60 seconds per connected agent</div>
+            <button class="primary-button" id="startMission" type="button" disabled>Start online round</button>
           </div>
         </div>
 
@@ -347,23 +283,17 @@
           </div>
           <div class="section-label">The 12 possible locations</div>
           <div class="game-board" id="roundLocations" aria-label="Location choices for the spy"></div>
-          <div class="envelope-heading">
-            <h3 class="section-label">Sealed agent envelopes</h3>
-            <span class="microcopy">Open privately, then close before passing</span>
-          </div>
-          <div class="envelope-grid" id="envelopes"></div>
+          <div class="section-label" id="onlineRoleHeading">Your private role</div>
           <div id="roleReveal" class="role-reveal" aria-live="polite"></div>
           <div class="round-actions">
             <span class="callout">The spy may guess at any time.</span>
             <button class="danger-button" id="spyGuess" type="button">Spy's location guess</button>
           </div>
           <div id="accusationArea" class="result-panel" hidden>
-            <div class="result-title">Time's up. Name the mole.</div>
-            <div class="result-detail">Agree on one suspect, lock the accusation, then reveal the result.</div>
-            <div class="result-actions">
-              <span class="microcopy">FIELD TEAM ACCUSATION</span>
-              <div class="accuse-row"><label class="sr-only" for="accusedPlayer">Choose the suspected mole</label><select class="accuse-select" id="accusedPlayer"></select><button class="primary-button" id="lockAccusation" type="button">Lock accusation</button></div>
-            </div>
+            <div class="result-title">Vote for the mole.</div>
+            <div class="result-detail">One vote per agent. You can change your vote until the timer ends; the highest vote total decides.</div>
+            <div class="vote-grid" id="voteGrid" role="group" aria-label="Vote for the suspected mole"></div>
+            <div class="microcopy" id="voteStatus" aria-live="polite"></div>
           </div>
           <div id="resultPanel" class="result-panel" hidden aria-live="polite">
             <div class="result-title" id="resultTitle"></div>
@@ -386,19 +316,6 @@
         <section class="side-section">
           <div class="side-head"><div class="side-title">Roster</div><span class="live-badge" id="teamBadge">0 AGENTS</span></div>
           <div class="team-list" id="teamList"></div>
-        </section>
-        <section class="side-section media-section">
-          <div class="side-head"><div class="side-title">Device check</div><span class="live-badge">LOCAL</span></div>
-          <div class="media-box" id="mediaBox">
-            <div class="camera-placeholder" id="cameraPlaceholder"><span class="camera-crosshair">+</span>CAMERA PREVIEW OFF</div>
-            <video id="cameraVideo" autoplay muted playsinline hidden></video>
-          </div>
-          <div class="media-actions">
-            <button class="quiet-button" id="cameraToggle" type="button">Enable camera</button>
-            <button class="quiet-button" id="micToggle" type="button">Enable mic</button>
-          </div>
-          <div class="permission-status" id="mediaStatus" aria-live="polite">Camera and mic are off.</div>
-          <p class="media-note">Device preview only. A room service is needed to connect remote players.</p>
         </section>
       </aside>
     </main>
@@ -479,22 +396,11 @@
 
     const MIN_PLAYERS = 3;
     const MAX_PLAYERS = 10;
-    const STARTING_PLAYERS = ['Agent Nova', 'Agent Finch', 'Agent Sable'];
-    let players = [...STARTING_PLAYERS];
     let activeLocations = [];
-    let selectedLocation = null;
-    let spyIndex = -1;
-    let assignments = [];
-    let secondsRemaining = 0;
-    let timerId = null;
-    let timerRunning = false;
-    let missionNumber = 1;
     let selectedGuess = null;
-    let cameraStream = null;
-    let microphoneStream = null;
-    let roundFinished = false;
     let activeRoom = null;
     let activeRoomPlayerId = null;
+    let activeRound = null;
     let roomPollId = null;
 
     const byId = (id) => document.getElementById(id);
@@ -513,57 +419,25 @@
       return `${minutes}:${remainder}`;
     }
 
-    function renderRoster() {
-      const roster = byId('roster');
-      roster.replaceChildren();
-      players.forEach((name, index) => {
-        const row = document.createElement('div');
-        row.className = 'player-row';
-        const number = document.createElement('span');
-        number.className = 'player-number';
-        number.textContent = String(index + 1).padStart(2, '0');
-        const input = document.createElement('input');
-        input.className = 'player-name';
-        input.type = 'text';
-        input.maxLength = 24;
-        input.value = name;
-        input.setAttribute('aria-label', `Agent ${index + 1} name`);
-        input.addEventListener('input', () => {
-          players[index] = input.value;
-          renderTeamList();
-          updateSetupState();
-        });
-        const remove = document.createElement('button');
-        remove.className = 'icon-button';
-        remove.type = 'button';
-        remove.setAttribute('aria-label', `Remove ${name || `agent ${index + 1}`}`);
-        remove.textContent = '×';
-        remove.disabled = players.length <= MIN_PLAYERS;
-        remove.addEventListener('click', () => {
-          players.splice(index, 1);
-          renderRoster();
-          updateSetupState();
-        });
-        row.append(number, input, remove);
-        roster.append(row);
-      });
-      byId('rosterCount').textContent = `${String(players.length).padStart(2, '0')} / ${MAX_PLAYERS}`;
-      byId('teamBadge').textContent = `${players.length} AGENTS`;
-      byId('addPlayer').disabled = players.length >= MAX_PLAYERS;
-      renderTeamList();
-      updateSetupState();
-    }
-
     function renderTeamList() {
       const team = byId('teamList');
       team.replaceChildren();
-      players.forEach((name, index) => {
+      const roomPlayers = activeRoom?.players || [];
+      byId('teamBadge').textContent = `${roomPlayers.length} ONLINE`;
+      if (!roomPlayers.length) {
+        const empty = document.createElement('div');
+        empty.className = 'team-line';
+        empty.textContent = 'No room joined';
+        team.append(empty);
+        return;
+      }
+      roomPlayers.forEach((player, index) => {
         const line = document.createElement('div');
         line.className = 'team-line';
         const label = document.createElement('span');
-        label.textContent = `AGENT ${String(index + 1).padStart(2, '0')}`;
+        label.textContent = player.isHost ? 'HOST' : `AGENT ${String(index + 1).padStart(2, '0')}`;
         const value = document.createElement('strong');
-        value.textContent = name.trim() || 'Unnamed agent';
+        value.textContent = player.name;
         line.append(label, value);
         team.append(line);
       });
@@ -585,20 +459,23 @@
       });
     }
 
-    function pickLocations() {
-      activeLocations = shuffle(LOCATIONS).slice(0, 12);
-      renderLocations(byId('lobbyLocations'));
-    }
-
     function updateSetupState() {
-      const names = players.map((name) => name.trim());
-      const validNames = names.every(Boolean) && new Set(names.map((name) => name.toLowerCase())).size === names.length;
-      byId('startMission').disabled = players.length < MIN_PLAYERS || !validNames;
-      byId('roundLength').textContent = formatTime(players.length * 60);
-      byId('sideTimer').textContent = formatTime(players.length * 60);
-      byId('mainTimer').textContent = formatTime(players.length * 60);
-      byId('sideTimerCaption').textContent = `60 seconds per agent · ${players.length} agents`;
-      byId('panelStatus').textContent = players.length < MIN_PLAYERS ? 'ADD MORE AGENTS' : validNames ? 'AWAITING AGENTS' : 'CHECK AGENT NAMES';
+      const playerCount = activeRoom?.players.length || 0;
+      const isHost = Boolean(activeRoom?.isHost);
+      const hasFinishedRound = activeRound?.status === 'finished';
+      byId('startMission').disabled = !isHost || playerCount < MIN_PLAYERS || Boolean(activeRound && !hasFinishedRound);
+      byId('startMission').textContent = !activeRoom
+        ? 'Create or join a room'
+        : hasFinishedRound
+          ? 'Start next round'
+          : activeRound
+            ? 'Round in progress'
+            : 'Start online round';
+      byId('roundLength').textContent = playerCount ? formatTime(playerCount * 60) : 'WAITING FOR ROOM';
+      byId('sideTimer').textContent = formatTime(playerCount * 60);
+      byId('mainTimer').textContent = formatTime(playerCount * 60);
+      byId('sideTimerCaption').textContent = playerCount ? `60 seconds per agent · ${playerCount} agents` : '60 seconds per agent';
+      byId('panelStatus').textContent = !activeRoom ? 'CREATE OR JOIN' : playerCount < MIN_PLAYERS ? 'NEED 3 AGENTS' : isHost ? 'READY TO START' : 'WAITING FOR HOST';
     }
 
     function setRoomMessage(message, isError = false) {
@@ -617,8 +494,9 @@
       return result;
     }
 
-    function renderOnlineRoom(room) {
+    function renderOnlineRoom(room, round = null) {
       activeRoom = room;
+      activeRound = round;
       byId('roomSession').hidden = false;
       byId('roomCodeDisplay').textContent = room.code;
       byId('roomBadge').textContent = `${room.players.length} / ${MAX_PLAYERS} ONLINE`;
@@ -639,17 +517,111 @@
       byId('roomCodeInput').disabled = true;
       byId('createRoom').disabled = true;
       byId('joinRoom').disabled = true;
-      setRoomMessage('Lobby roster is syncing. Rounds still use local pass-and-play envelopes.');
+      renderTeamList();
+      updateSetupState();
+      setRoomMessage('Online room ready. The host can start when 3 agents have joined.');
+      if (round) {
+        renderOnlineRound(round, room);
+      } else {
+        byId('lobbyView').hidden = false;
+        byId('roundView').hidden = true;
+        byId('mainPanelTitle').textContent = 'Online lobby';
+        byId('headerStatus').textContent = 'Room ready';
+        byId('timerBadge').textContent = 'READY';
+        byId('sideTimer').textContent = formatTime(room.players.length * 60);
+        byId('mainTimer').textContent = formatTime(room.players.length * 60);
+      }
     }
 
-    function connectToRoom(room, playerId) {
+    function renderOnlineRound(round, room) {
+      activeRound = round;
+      activeLocations = round.locations.map((name) => ({ name }));
+      byId('lobbyView').hidden = true;
+      byId('roundView').hidden = false;
+      byId('mainPanelTitle').textContent = 'Active operation';
+      byId('roundNumber').textContent = String(round.number).padStart(2, '0');
+      byId('panelStatus').textContent = round.status === 'playing'
+        ? round.paused ? 'PAUSED' : 'FIELD LIVE'
+        : round.status === 'voting' ? 'VOTE FOR THE MOLE' : 'MISSION DEBRIEF';
+      byId('headerStatus').textContent = round.status === 'playing'
+        ? round.paused ? 'Operation paused' : 'Operation in progress'
+        : round.status === 'voting' ? 'Accusation vote is open' : 'Operation complete';
+      byId('timerBadge').textContent = round.status === 'finished'
+        ? 'COMPLETE'
+        : round.status === 'voting' ? 'VOTING' : round.paused ? 'PAUSED' : 'LIVE';
+      byId('sideTimer').textContent = formatTime(round.remainingSeconds);
+      byId('mainTimer').textContent = formatTime(round.remainingSeconds);
+      byId('sideTimerCaption').textContent = round.status === 'voting'
+        ? `${round.accusationVoteSeconds}-second accusation vote`
+        : `${round.secondsPerPlayer} seconds per agent · ${room.players.length} agents`;
+      byId('sideTimer').style.color = round.remainingSeconds <= 30 ? 'var(--red)' : '';
+      byId('mainTimer').style.color = round.remainingSeconds <= 30 ? 'var(--red)' : '';
+      renderLocations(byId('roundLocations'));
+
+      const reveal = byId('roleReveal');
+      reveal.replaceChildren();
+      const role = document.createElement('div');
+      role.className = 'role-title';
+      role.textContent = round.isSpy ? 'You are the Mole' : round.role;
+      const location = document.createElement('div');
+      location.className = 'role-location';
+      location.textContent = round.isSpy ? 'You do not know the location. Blend in and guess when ready.' : `Your location is ${round.location}.`;
+      const tip = document.createElement('div');
+      tip.className = 'role-tip';
+      tip.textContent = round.isSpy ? 'Only you can submit a location guess.' : 'Keep your answers natural. Do not name the location outright.';
+      reveal.append(role, location, tip);
+      reveal.classList.add('is-visible');
+
+      byId('spyGuess').hidden = !round.isSpy || round.status !== 'playing';
+      byId('spyGuess').disabled = round.status !== 'playing';
+      const isHost = room.isHost;
+      byId('pauseTimer').textContent = round.paused ? 'Resume' : 'Pause';
+      byId('pauseTimer').disabled = !isHost || round.status !== 'playing';
+      byId('resetTimer').disabled = !isHost || round.status === 'finished';
+      byId('accusationArea').hidden = round.status !== 'voting';
+      byId('resultPanel').hidden = round.status !== 'finished';
+      byId('newMission').disabled = !isHost;
+      byId('newMission').textContent = 'Start next round';
+
+      if (round.status === 'voting') {
+        const voteGrid = byId('voteGrid');
+        voteGrid.replaceChildren();
+        room.players.forEach((player) => {
+          const option = document.createElement('button');
+          option.className = `vote-option${round.myVoteId === player.id ? ' is-selected' : ''}`;
+          option.type = 'button';
+          option.setAttribute('aria-pressed', String(round.myVoteId === player.id));
+          const name = document.createElement('span');
+          name.textContent = player.name;
+          const count = document.createElement('span');
+          const votes = round.voteCounts?.[player.id] || 0;
+          count.className = 'vote-count';
+          count.textContent = `${votes} ${votes === 1 ? 'vote' : 'votes'}`;
+          option.append(name, count);
+          option.addEventListener('click', () => submitOnlineVote(player.id));
+          voteGrid.append(option);
+        });
+        const currentVote = room.players.find((player) => player.id === round.myVoteId);
+        byId('voteStatus').textContent = currentVote
+          ? `Your current vote: ${currentVote.name}. Click another agent to change it.`
+          : 'Your vote is not submitted yet.';
+      }
+
+      if (round.status === 'finished' && round.result) {
+        byId('resultTitle').textContent = round.result.winner === 'spy' ? 'The mole got away.' : 'Mole neutralized.';
+        byId('resultDetail').textContent = round.result.reason;
+        byId('resultLocation').textContent = `THE LOCATION WAS ${round.result.location.toUpperCase()} · THE MOLE WAS ${round.result.spy.toUpperCase()}`;
+      }
+    }
+
+    function connectToRoom(room, playerId, round = null) {
       activeRoomPlayerId = playerId;
       sessionStorage.setItem(`molePatrolRoom:${room.code}`, playerId);
       sessionStorage.setItem('molePatrolLastRoom', room.code);
       byId('roomCodeInput').value = room.code;
-      renderOnlineRoom(room);
+      renderOnlineRoom(room, round);
       clearInterval(roomPollId);
-      roomPollId = setInterval(refreshOnlineRoom, 3000);
+      roomPollId = setInterval(refreshOnlineRoom, 1000);
       const sharedUrl = new URL(window.location.href);
       sharedUrl.searchParams.set('room', room.code);
       history.replaceState(null, '', sharedUrl);
@@ -665,6 +637,7 @@
       history.replaceState(null, '', currentUrl);
       activeRoom = null;
       activeRoomPlayerId = null;
+      activeRound = null;
       byId('roomSession').hidden = true;
       byId('roomBadge').textContent = 'NO ROOM';
       byId('roomBadge').classList.remove('room-full');
@@ -672,6 +645,13 @@
       byId('roomCodeInput').disabled = false;
       byId('createRoom').disabled = false;
       byId('joinRoom').disabled = false;
+      byId('lobbyView').hidden = false;
+      byId('roundView').hidden = true;
+      byId('mainPanelTitle').textContent = 'Online lobby';
+      byId('headerStatus').textContent = 'Briefing room ready';
+      byId('timerBadge').textContent = 'STANDBY';
+      renderTeamList();
+      updateSetupState();
       setRoomMessage(message);
     }
 
@@ -680,7 +660,7 @@
       try {
         const query = new URLSearchParams({ playerId: activeRoomPlayerId });
         const result = await roomRequest(`/api/rooms/${activeRoom.code}?${query}`);
-        renderOnlineRoom(result.room);
+        renderOnlineRoom(result.room, result.round);
       } catch (error) {
         disconnectFromRoom(error.message);
       }
@@ -743,173 +723,69 @@
         const query = new URLSearchParams({ playerId });
         const result = await roomRequest(`/api/rooms/${code}?${query}`);
         if (!result.room.players.some((player) => player.id === playerId)) throw new Error('You are no longer in this room.');
-        connectToRoom(result.room, playerId);
+        connectToRoom(result.room, playerId, result.round);
       } catch (error) {
         disconnectFromRoom(error.message);
       }
     }
 
-    function startMission() {
-      if (players.length < MIN_PLAYERS || players.some((name) => !name.trim())) return;
-      activeLocations = shuffle(LOCATIONS).slice(0, 12);
-      selectedLocation = activeLocations[Math.floor(Math.random() * activeLocations.length)];
-      spyIndex = Math.floor(Math.random() * players.length);
-      const roles = shuffle(selectedLocation.roles);
-      assignments = players.map((name, index) => ({
-        name: name.trim(),
-        isSpy: index === spyIndex,
-        role: index === spyIndex ? 'The Mole' : roles[index % roles.length]
-      }));
-      roundFinished = false;
-      secondsRemaining = players.length * 60;
-      byId('lobbyView').hidden = true;
-      byId('roundView').hidden = false;
-      byId('mainPanelTitle').textContent = 'Active operation';
-      byId('panelStatus').textContent = 'FIELD LIVE';
-      byId('headerStatus').textContent = 'Operation in progress';
-      byId('roundNumber').textContent = String(missionNumber).padStart(2, '0');
-      byId('accusationArea').hidden = true;
-      byId('resultPanel').hidden = true;
-      byId('roleReveal').classList.remove('is-visible');
-      byId('roleReveal').replaceChildren();
-      renderLocations(byId('roundLocations'));
-      renderEnvelopes();
-      setTimerDisplay();
-      byId('timerBadge').textContent = 'LIVE';
-      byId('pauseTimer').disabled = false;
-      byId('resetTimer').disabled = false;
-      startTimer();
-    }
-
-    function renderEnvelopes() {
-      const envelopeGrid = byId('envelopes');
-      envelopeGrid.replaceChildren();
-      assignments.forEach((assignment, index) => {
-        const envelope = document.createElement('button');
-        envelope.type = 'button';
-        envelope.className = 'envelope';
-        envelope.setAttribute('aria-label', `Open sealed envelope for ${assignment.name}`);
-        const number = document.createElement('span');
-        number.className = 'envelope-number';
-        number.textContent = `SEALED / ${String(index + 1).padStart(2, '0')}`;
-        const name = document.createElement('span');
-        name.className = 'envelope-name';
-        name.textContent = assignment.name;
-        const state = document.createElement('span');
-        state.className = 'envelope-state';
-        state.textContent = 'Tap to reveal';
-        envelope.append(number, name, state);
-        envelope.addEventListener('click', () => revealRole(index, envelope));
-        envelopeGrid.append(envelope);
-      });
-    }
-
-    function revealRole(index, envelope) {
-      if (roundFinished) return;
-      const reveal = byId('roleReveal');
-      const openEnvelope = envelope.classList.contains('is-open');
-      document.querySelectorAll('.envelope').forEach((item) => {
-        item.classList.remove('is-open');
-        item.querySelector('.envelope-state').textContent = 'Tap to reveal';
-      });
-      if (openEnvelope) {
-        reveal.classList.remove('is-visible');
-        return;
-      }
-      envelope.classList.add('is-open');
-      envelope.querySelector('.envelope-state').textContent = 'Currently open';
-      const assignment = assignments[index];
-      reveal.replaceChildren();
-      const role = document.createElement('div');
-      role.className = 'role-title';
-      role.textContent = assignment.isSpy ? 'You are the mole' : assignment.role;
-      const location = document.createElement('div');
-      location.className = 'role-location';
-      location.textContent = assignment.isSpy ? 'You have no location. Blend in and make your guess.' : `Your location is ${selectedLocation.name}.`;
-      const tip = document.createElement('div');
-      tip.className = 'role-tip';
-      tip.textContent = assignment.isSpy ? 'Ask careful questions. Use the location board when you are ready to guess.' : 'Keep your answers natural. Do not name the location outright.';
-      reveal.append(role, location, tip);
-      reveal.classList.add('is-visible');
-      reveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    function setTimerDisplay() {
-      const formatted = formatTime(secondsRemaining);
-      byId('sideTimer').textContent = formatted;
-      byId('mainTimer').textContent = formatted;
-      byId('sideTimer').style.color = secondsRemaining <= 30 ? 'var(--red)' : '';
-      byId('mainTimer').style.color = secondsRemaining <= 30 ? 'var(--red)' : '';
-    }
-
-    function startTimer() {
-      clearInterval(timerId);
-      timerRunning = true;
-      byId('pauseTimer').textContent = 'Pause';
-      timerId = setInterval(() => {
-        if (secondsRemaining > 0) {
-          secondsRemaining -= 1;
-          setTimerDisplay();
-        }
-        if (secondsRemaining <= 0) {
-          clearInterval(timerId);
-          timerRunning = false;
-          onTimeExpired();
-        }
-      }, 1000);
-    }
-
-    function setTimerPaused(paused) {
-      if (roundFinished || secondsRemaining <= 0) return;
-      if (paused) {
-        clearInterval(timerId);
-        timerRunning = false;
-        byId('pauseTimer').textContent = 'Resume';
-        byId('timerBadge').textContent = 'PAUSED';
-        byId('headerStatus').textContent = 'Operation paused';
-      } else {
-        startTimer();
-        byId('timerBadge').textContent = 'LIVE';
-        byId('headerStatus').textContent = 'Operation in progress';
+    async function startOnlineMission() {
+      if (!activeRoom || !activeRoomPlayerId) return;
+      byId('startMission').disabled = true;
+      try {
+        const result = await roomRequest(`/api/rooms/${activeRoom.code}/start`, {
+          method: 'POST',
+          body: JSON.stringify({ playerId: activeRoomPlayerId, locations: LOCATIONS })
+        });
+        renderOnlineRoom(result.room, result.round);
+      } catch (error) {
+        setRoomMessage(error.message, true);
+        updateSetupState();
       }
     }
 
-    function onTimeExpired() {
-      byId('timerBadge').textContent = 'EXPIRED';
-      byId('headerStatus').textContent = 'Accusation required';
-      byId('panelStatus').textContent = 'TIME EXPIRED';
-      byId('pauseTimer').disabled = true;
-      byId('accusationArea').hidden = false;
-      const select = byId('accusedPlayer');
-      select.replaceChildren();
-      assignments.forEach((assignment, index) => {
-        const option = document.createElement('option');
-        option.value = String(index);
-        option.textContent = assignment.name;
-        select.append(option);
-      });
+    async function updateOnlineTimer(action) {
+      if (!activeRoom || !activeRoomPlayerId) return;
+      try {
+        const result = await roomRequest(`/api/rooms/${activeRoom.code}/timer`, {
+          method: 'POST',
+          body: JSON.stringify({ playerId: activeRoomPlayerId, action })
+        });
+        renderOnlineRoom(result.room, result.round);
+      } catch (error) {
+        setRoomMessage(error.message, true);
+      }
     }
 
-    function finishRound(winner, reason) {
-      if (roundFinished) return;
-      roundFinished = true;
-      clearInterval(timerId);
-      timerRunning = false;
-      byId('pauseTimer').disabled = true;
-      byId('resetTimer').disabled = true;
-      byId('accusationArea').hidden = true;
-      byId('spyGuess').disabled = true;
-      byId('timerBadge').textContent = 'COMPLETE';
-      byId('headerStatus').textContent = 'Operation complete';
-      byId('panelStatus').textContent = 'MISSION DEBRIEF';
-      byId('resultTitle').textContent = winner === 'spy' ? 'The mole got away.' : 'Mole neutralized.';
-      byId('resultDetail').textContent = reason;
-      byId('resultLocation').textContent = `THE LOCATION WAS ${selectedLocation.name.toUpperCase()} · THE MOLE WAS ${assignments[spyIndex].name.toUpperCase()}`;
-      byId('resultPanel').hidden = false;
+    async function submitOnlineGuess(locationName) {
+      if (!activeRoom || !activeRoomPlayerId) return;
+      try {
+        const result = await roomRequest(`/api/rooms/${activeRoom.code}/guess`, {
+          method: 'POST',
+          body: JSON.stringify({ playerId: activeRoomPlayerId, location: locationName })
+        });
+        renderOnlineRoom(result.room, result.round);
+      } catch (error) {
+        setRoomMessage(error.message, true);
+      }
+    }
+
+    async function submitOnlineVote(accusedSeatId) {
+      if (!activeRoom || !activeRoomPlayerId) return;
+      try {
+        const result = await roomRequest(`/api/rooms/${activeRoom.code}/vote`, {
+          method: 'POST',
+          body: JSON.stringify({ playerId: activeRoomPlayerId, accusedSeatId })
+        });
+        renderOnlineRoom(result.room, result.round);
+      } catch (error) {
+        setRoomMessage(error.message, true);
+        byId('headerStatus').textContent = error.message;
+      }
     }
 
     function openGuessDialog() {
-      if (roundFinished) return;
+      if (!activeRound?.isSpy || activeRound.status !== 'playing') return;
       selectedGuess = null;
       byId('submitGuess').disabled = true;
       const choices = byId('guessChoices');
@@ -930,61 +806,6 @@
       byId('guessDialog').showModal();
     }
 
-    async function toggleCamera() {
-      if (cameraStream) {
-        cameraStream.getTracks().forEach((track) => track.stop());
-        cameraStream = null;
-        byId('cameraVideo').srcObject = null;
-        byId('cameraVideo').hidden = true;
-        byId('cameraPlaceholder').hidden = false;
-        byId('cameraToggle').textContent = 'Enable camera';
-        updateMediaStatus();
-        return;
-      }
-      try {
-        cameraStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-        byId('cameraVideo').srcObject = cameraStream;
-        byId('cameraVideo').hidden = false;
-        byId('cameraPlaceholder').hidden = true;
-        byId('cameraToggle').textContent = 'Disable camera';
-        updateMediaStatus();
-      } catch (error) {
-        byId('mediaStatus').textContent = `Camera unavailable: ${error.message}`;
-      }
-    }
-
-    async function toggleMicrophone() {
-      if (microphoneStream) {
-        microphoneStream.getTracks().forEach((track) => track.stop());
-        microphoneStream = null;
-        byId('micToggle').textContent = 'Enable mic';
-        updateMediaStatus();
-        return;
-      }
-      try {
-        microphoneStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-        byId('micToggle').textContent = 'Disable mic';
-        updateMediaStatus();
-      } catch (error) {
-        byId('mediaStatus').textContent = `Microphone unavailable: ${error.message}`;
-      }
-    }
-
-    function updateMediaStatus() {
-      const enabled = [];
-      if (cameraStream) enabled.push('camera on');
-      if (microphoneStream) enabled.push('mic on');
-      byId('mediaStatus').textContent = enabled.length ? `${enabled.join(' · ')} · this device only` : 'Camera and mic are off.';
-    }
-
-    byId('addPlayer').addEventListener('click', () => {
-      if (players.length >= MAX_PLAYERS) return;
-      players.push(`Agent ${String(players.length + 1).padStart(2, '0')}`);
-      renderRoster();
-      const inputs = byId('roster').querySelectorAll('input');
-      inputs[inputs.length - 1].focus();
-      inputs[inputs.length - 1].select();
-    });
     byId('createRoom').addEventListener('click', createOnlineRoom);
     byId('joinRoom').addEventListener('click', joinOnlineRoom);
     byId('roomCodeInput').addEventListener('input', (event) => {
@@ -999,65 +820,28 @@
       invite.searchParams.set('room', activeRoom.code);
       try {
         await navigator.clipboard.writeText(invite.toString());
-        setRoomMessage('Invite link copied. Localhost links only work on this device.');
+        setRoomMessage('Invite link copied. Share it with the field team.');
       } catch (error) {
         setRoomMessage(`Share room code ${activeRoom.code}.`);
       }
     });
     byId('leaveRoom').addEventListener('click', leaveOnlineRoom);
-    byId('shuffleLocations').addEventListener('click', pickLocations);
-    byId('startMission').addEventListener('click', startMission);
-    byId('pauseTimer').addEventListener('click', () => setTimerPaused(timerRunning));
-    byId('resetTimer').addEventListener('click', () => {
-      secondsRemaining = players.length * 60;
-      setTimerDisplay();
-      startTimer();
-      byId('accusationArea').hidden = true;
-      byId('timerBadge').textContent = 'LIVE';
-      byId('headerStatus').textContent = 'Operation in progress';
-    });
+    byId('startMission').addEventListener('click', startOnlineMission);
+    byId('pauseTimer').addEventListener('click', () => updateOnlineTimer(activeRound?.paused ? 'resume' : 'pause'));
+    byId('resetTimer').addEventListener('click', () => updateOnlineTimer('reset'));
     byId('spyGuess').addEventListener('click', openGuessDialog);
     byId('closeGuess').addEventListener('click', () => byId('guessDialog').close());
     byId('cancelGuess').addEventListener('click', () => byId('guessDialog').close());
     byId('guessForm').addEventListener('submit', (event) => {
       event.preventDefault();
-      if (!selectedGuess) return;
+      if (!selectedGuess || !activeRoom) return;
       byId('guessDialog').close();
-      if (selectedGuess === selectedLocation) {
-        finishRound('spy', 'The mole correctly identified the hidden location.');
-      } else {
-        finishRound('agents', `The mole guessed ${selectedGuess.name} and missed.`);
-      }
+      submitOnlineGuess(selectedGuess.name);
     });
-    byId('lockAccusation').addEventListener('click', () => {
-      const accusedIndex = Number(byId('accusedPlayer').value);
-      if (accusedIndex === spyIndex) {
-        finishRound('agents', `${assignments[accusedIndex].name} was correctly identified by the field team.`);
-      } else {
-        finishRound('spy', `${assignments[accusedIndex].name} was accused, but the mole was ${assignments[spyIndex].name}.`);
-      }
-    });
-    byId('newMission').addEventListener('click', () => {
-      missionNumber += 1;
-      byId('roundView').hidden = true;
-      byId('lobbyView').hidden = false;
-      byId('mainPanelTitle').textContent = 'Mission briefing';
-      byId('panelStatus').textContent = 'AWAITING AGENTS';
-      byId('headerStatus').textContent = 'Briefing room ready';
-      byId('timerBadge').textContent = 'STANDBY';
-      byId('spyGuess').disabled = false;
-      pickLocations();
-      renderRoster();
-    });
-    byId('cameraToggle').addEventListener('click', toggleCamera);
-    byId('micToggle').addEventListener('click', toggleMicrophone);
-    window.addEventListener('beforeunload', () => {
-      clearInterval(timerId);
-      [cameraStream, microphoneStream].filter(Boolean).forEach((stream) => stream.getTracks().forEach((track) => track.stop()));
-    });
+    byId('newMission').addEventListener('click', startOnlineMission);
 
-    pickLocations();
-    renderRoster();
+    renderTeamList();
+    updateSetupState();
     restoreOnlineRoom();
   </script>
 </body>
