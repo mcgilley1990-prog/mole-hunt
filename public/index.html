@@ -82,7 +82,7 @@
     .online-room { margin-bottom: 20px; padding: 14px; border: 1px solid #46513a; border-radius: 2px; background: linear-gradient(110deg, rgba(211,243,107,.045), rgba(20,23,17,.55) 58%); }
     .online-room-head, .room-session-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .online-room-title { margin-top: 5px; font: 700 19px/1 var(--display); text-transform: uppercase; }
-    .room-controls { display: grid; grid-template-columns: minmax(110px, 1fr) auto auto minmax(100px, .7fr) auto; gap: 7px; margin-top: 13px; }
+    .room-controls { display: grid; grid-template-columns: minmax(110px, 1fr) auto auto minmax(100px, .7fr) auto auto; gap: 7px; margin-top: 13px; }
     .room-name-input, .room-code-input { width: 100%; min-width: 0; min-height: 36px; padding: 8px 10px; color: var(--ink); border: 1px solid var(--line); border-radius: 2px; background: #141711; }
     .room-controls .quiet-button { min-height: 36px; padding: 0 10px; color: var(--lime); border-color: #46513a; }
     .room-or { align-self: center; color: var(--dim); font-size: 9px; }
@@ -94,8 +94,8 @@
     .room-session-actions { display: flex; gap: 6px; }
     .room-session-actions .quiet-button { min-height: 28px; padding: 0 8px; font-size: 9px; }
     .room-roster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; margin-top: 11px; }
-    .room-member { display: flex; justify-content: space-between; gap: 8px; min-width: 0; color: var(--dim); font-size: 9px; }
-    .room-member strong { overflow: hidden; color: var(--ink); font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+    .room-member { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; min-width: 0; color: var(--muted); font-size: 10px; }
+    .room-member strong { min-width: 0; color: var(--ink); font-size: 13px; font-weight: 600; overflow-wrap: anywhere; text-align: right; }
     .room-full { color: var(--orange); }
     .section-label { margin: 0 0 12px; color: var(--muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
     .icon-button, .quiet-button, .primary-button, .danger-button {
@@ -112,8 +112,8 @@
     }
     .location-tile::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 2px; background: #566047; }
     .location-tile:nth-child(4n)::before { background: var(--orange); }
-    .location-num { display: block; margin-bottom: 5px; color: var(--dim); font-size: 8px; }
-    .location-name { display: block; overflow: hidden; color: var(--ink); font-size: 10px; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+    .location-num { display: block; margin-bottom: 5px; color: var(--muted); font-size: 9px; }
+    .location-name { display: block; color: var(--ink); font-size: 14px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
     .setup-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 21px; padding-top: 17px; border-top: 1px solid var(--line); }
     .setup-footnote { color: var(--dim); font-size: 10px; line-height: 1.5; }
     .primary-button { min-height: 42px; padding: 0 17px; color: #141810; border-color: var(--lime); background: var(--lime); font-weight: 700; font-size: 11px; letter-spacing: .5px; text-transform: uppercase; }
@@ -130,10 +130,12 @@
     .timer-caption { margin: 8px 0 14px; color: var(--muted); font-size: 10px; }
     .timer-controls { display: flex; gap: 7px; }
     .timer-controls button { flex: 1; }
+    .room-actions { display: flex; gap: 7px; margin-top: 9px; }
+    .room-actions button { flex: 1; }
     .quiet-button:disabled { opacity: .35; cursor: not-allowed; }
     .team-list { display: grid; gap: 9px; }
-    .team-line { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 10px; }
-    .team-line strong { color: var(--ink); font-weight: 500; }
+    .team-line { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; min-width: 0; color: var(--muted); font-size: 10px; }
+    .team-line strong { min-width: 0; color: var(--ink); font-size: 13px; font-weight: 600; overflow-wrap: anywhere; text-align: right; }
     .round-content { padding: 20px; }
     .round-topline { display: flex; justify-content: space-between; align-items: start; gap: 16px; margin-bottom: 19px; }
     .round-headline { margin: 5px 0 0; font: 700 31px/1 var(--display); text-transform: uppercase; }
@@ -141,12 +143,12 @@
     .round-clock .timer-display { padding: 0; font-size: 38px; }
     .round-clock .timer-caption { margin: 5px 0 0; }
     .game-board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; padding: 13px; border: 1px solid var(--line); background: #141711; }
-    .game-board .location-tile { min-height: 48px; }
-    .role-reveal { display: none; margin-top: 8px; padding: 10px; border-left: 2px solid var(--orange); background: rgba(232,149,92,.08); }
+    .game-board .location-tile { min-height: 72px; }
+    .role-reveal { display: none; margin-top: 8px; padding: 16px; border-left: 2px solid var(--orange); background: rgba(232,149,92,.08); }
     .role-reveal.is-visible { display: block; animation: reveal-in .22s ease-out both; }
-    .role-title { color: var(--orange); font: 700 19px/1 var(--display); text-transform: uppercase; }
-    .role-location { margin-top: 6px; color: var(--muted); font-size: 10px; }
-    .role-tip { margin-top: 8px; color: var(--dim); font-size: 9px; line-height: 1.6; }
+    .role-title { color: var(--orange); font: 700 26px/1.1 var(--display); text-transform: uppercase; overflow-wrap: anywhere; }
+    .role-location { margin-top: 8px; color: var(--ink); font-size: 15px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+    .role-tip { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.6; }
     @keyframes reveal-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
     .round-actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 9px; margin-top: 19px; padding-top: 16px; border-top: 1px solid var(--line); }
     .danger-button { min-height: 38px; padding: 0 13px; color: var(--red); border-color: #68413b; font-size: 10px; }
@@ -157,7 +159,7 @@
     .result-detail { margin-top: 8px; color: var(--muted); font-size: 11px; line-height: 1.6; }
     .result-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
     .vote-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); gap: 7px; margin-top: 13px; }
-    .vote-option { min-width: 0; min-height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; color: var(--muted); border: 1px solid var(--line); border-radius: 2px; background: #141711; cursor: pointer; text-align: left; font-size: 10px; }
+    .vote-option { min-width: 0; min-height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; color: var(--ink); border: 1px solid var(--line); border-radius: 2px; background: #141711; cursor: pointer; text-align: left; font-size: 13px; overflow-wrap: anywhere; }
     .vote-option:hover, .vote-option.is-selected { color: var(--lime); border-color: var(--lime); background: rgba(211,243,107,.06); }
     .vote-count { flex: 0 0 auto; color: var(--dim); font-size: 9px; }
 
@@ -168,7 +170,7 @@
     .dialog-title { margin: 5px 0 0; font: 700 31px/1 var(--display); text-transform: uppercase; }
     .dialog-copy { margin: 10px 0 16px; color: var(--muted); font-size: 10px; line-height: 1.6; }
     .guess-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; max-height: 42vh; overflow: auto; padding: 2px; }
-    .guess-option { min-height: 38px; padding: 8px; color: var(--muted); border: 1px solid var(--line); border-radius: 2px; background: #141711; cursor: pointer; text-align: left; font-size: 10px; }
+    .guess-option { min-height: 38px; padding: 8px; color: var(--ink); border: 1px solid var(--line); border-radius: 2px; background: #141711; cursor: pointer; text-align: left; font-size: 13px; overflow-wrap: anywhere; }
     .guess-option:hover, .guess-option.is-selected { color: var(--lime); border-color: var(--lime); background: rgba(211,243,107,.06); }
     .dialog-actions { display: flex; justify-content: end; gap: 8px; margin-top: 16px; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
@@ -181,6 +183,7 @@
       .room-or { display: none; }
       .room-code-input { grid-column: 1; }
       #joinRoom { grid-column: 2; grid-row: 2; }
+      #watchRoom { grid-column: 1 / -1; }
     }
     @media (max-width: 700px) {
       .shell { padding: 0 13px 24px; }
@@ -254,6 +257,7 @@
               <label class="sr-only" for="roomCodeInput">Six-character room code</label>
               <input class="room-code-input" id="roomCodeInput" type="text" maxlength="6" placeholder="ROOM CODE" autocomplete="off" spellcheck="false">
               <button class="quiet-button" id="joinRoom" type="button">Join</button>
+              <button class="quiet-button" id="watchRoom" type="button">Watch</button>
             </div>
             <div class="room-message" id="roomMessage" role="status">Create a room and share its code. Each player joins on their own device.</div>
             <div class="room-session" id="roomSession" hidden>
@@ -312,6 +316,10 @@
             <button class="quiet-button" id="pauseTimer" type="button" disabled>Pause</button>
             <button class="quiet-button" id="resetTimer" type="button" disabled>Reset</button>
           </div>
+          <div class="room-actions">
+            <button class="danger-button" id="abortGame" type="button" hidden>Abort game</button>
+            <button class="quiet-button" id="leaveRound" type="button" hidden>Leave room</button>
+          </div>
         </section>
         <section class="side-section">
           <div class="side-head"><div class="side-title">Roster</div><span class="live-badge" id="teamBadge">0 AGENTS</span></div>
@@ -332,66 +340,66 @@
 
   <script>
     const LOCATIONS = [
-      { name: 'Moonlit Laundromat', roles: ['Night attendant', 'Lost customer', 'Repair tech', 'Wash-and-fold clerk', 'Regular patron'] },
-      { name: 'Cloudberry Pancake Diner', roles: ['Line cook', 'Server', 'Early regular', 'Dishwasher', 'Counter manager'] },
-      { name: 'Underground Aquarium', roles: ['Tank diver', 'Night guard', 'Marine guide', 'Filter mechanic', 'Gift shop clerk'] },
-      { name: 'Clockwork Toy Repair', roles: ['Clock fixer', 'Toy tester', 'Shop owner', 'Parts courier', 'Collector'] },
-      { name: 'Mushroom Train Station', roles: ['Platform guard', 'Ticket clerk', 'Train driver', 'Snack vendor', 'Commuter'] },
-      { name: 'Rooftop Beekeepers', roles: ['Hive keeper', 'Honey bottler', 'Roof gardener', 'Safety inspector', 'Bee researcher'] },
-      { name: 'Indoor Snow Fort', roles: ['Snow sculptor', 'Sled marshal', 'Cocoa maker', 'Maintenance worker', 'Birthday guest'] },
-      { name: 'Floating Bookshop', roles: ['Bookseller', 'Boat pilot', 'Poetry reader', 'Delivery sailor', 'Storytime host'] },
-      { name: 'Dinosaur Laundrette', roles: ['Costume cleaner', 'Tour guide', 'Dino handler', 'Ticket scanner', 'Prop builder'] },
-      { name: 'Midnight Pie Kitchen', roles: ['Pie baker', 'Taste tester', 'Oven mechanic', 'Recipe keeper', 'Ingredient runner'] },
-      { name: 'Tiny Lighthouse Hotel', roles: ['Innkeeper', 'Guest', 'Bell ringer', 'Coast watcher', 'Breakfast cook'] },
-      { name: 'Suburban UFO Garage', roles: ['Model builder', 'Conspiracy host', 'Neighbor', 'Radio operator', 'Skeptical visitor'] },
-      { name: 'Secret Garden Shed', roles: ['Seed librarian', 'Compost expert', 'Garden volunteer', 'Watering monitor', 'Plant detective'] },
-      { name: 'Robot Pet Daycare', roles: ['Robot groomer', 'Playtime coach', 'Battery tech', 'Pet owner', 'Front desk host'] },
-      { name: 'Cave Cheese Cellar', roles: ['Cheese affineur', 'Cave guide', 'Delivery driver', 'Mold inspector', 'Tasting host'] },
-      { name: 'Desert Glass Studio', roles: ['Glassblower', 'Kiln keeper', 'Art student', 'Workshop guide', 'Supply runner'] },
-      { name: 'Cloud Watching Club', roles: ['Weather spotter', 'Club president', 'Sketch artist', 'Picnic planner', 'New member'] },
-      { name: 'Cardboard Castle', roles: ['Castle architect', 'Gate guard', 'Royal messenger', 'Dragon puppeteer', 'Visitor'] },
-      { name: 'Underwater Post Office', roles: ['Mail sorter', 'Diver courier', 'Stamp collector', 'Bubble technician', 'Postmaster'] },
-      { name: 'Night Market for Socks', roles: ['Sock vendor', 'Pattern knitter', 'Bargain hunter', 'Market announcer', 'Lost-and-found clerk'] },
-      { name: 'Wind-Up Museum', roles: ['Exhibit restorer', 'Tour guide', 'Key winder', 'Museum guard', 'Curious visitor'] },
-      { name: 'Pickleball Spaceport', roles: ['Launch marshal', 'Court referee', 'Rocket mechanic', 'Snack seller', 'Space athlete'] },
-      { name: 'Penguin Postal Hub', roles: ['Ice mail carrier', 'Sorting clerk', 'Route planner', 'Cold-room technician', 'Parcel recipient'] },
-      { name: 'Indoor Rainforest Cafe', roles: ['Canopy chef', 'Bird watcher', 'Plant misting tech', 'Nature guide', 'Cafe guest'] },
-      { name: 'Haunted Houseplant Shop', roles: ['Plant whisperer', 'Potting assistant', 'Night cashier', 'Leaf inspector', 'Nervous shopper'] },
-      { name: 'Volcano Weather Station', roles: ['Ash sampler', 'Weather analyst', 'Radio lookout', 'Gear mechanic', 'Relief scientist'] },
-      { name: 'Giant Kite Workshop', roles: ['Kite designer', 'Fabric cutter', 'Wind tester', 'String splicer', 'Workshop visitor'] },
-      { name: 'Marmalade Factory', roles: ['Fruit sorter', 'Jam boiler', 'Label printer', 'Quality taster', 'Delivery packer'] },
-      { name: 'Moon Cheese Observatory', roles: ['Telescope operator', 'Cheese tester', 'Night astronomer', 'Dome mechanic', 'Research guest'] },
-      { name: 'Underground Flower Shop', roles: ['Florist', 'Seed courier', 'Display stylist', 'Watering assistant', 'Bouquet customer'] },
-      { name: 'Puzzle Box Library', roles: ['Puzzle archivist', 'Quiet-room monitor', 'Riddle writer', 'Book restorer', 'Library visitor'] },
-      { name: 'Bouncy Castle Factory', roles: ['Inflatable designer', 'Seam tester', 'Air pump tech', 'Safety checker', 'Factory tour guest'] },
-      { name: 'Foggy Harbor Cafe', roles: ['Dockside barista', 'Ferry passenger', 'Fog signal keeper', 'Breakfast cook', 'Harbor reporter'] },
-      { name: 'Pillow Fort Embassy', roles: ['Fort ambassador', 'Cushion engineer', 'Peace negotiator', 'Snack diplomat', 'Visiting envoy'] },
-      { name: 'Miniature Golf Planet', roles: ['Course designer', 'Scorekeeper', 'Ball retriever', 'Space-suit attendant', 'Golfer'] },
-      { name: 'Sourdough Research Lab', roles: ['Starter keeper', 'Bread scientist', 'Lab baker', 'Temperature monitor', 'Taste panelist'] },
-      { name: 'Lantern-Making Loft', roles: ['Paper cutter', 'Light tester', 'Festival planner', 'Glue mixer', 'Workshop student'] },
-      { name: 'Underground Skate Rink', roles: ['Rink DJ', 'Skate guard', 'Wheel mechanic', 'Snack counter worker', 'Late-night skater'] },
-      { name: 'Secret Soup Society', roles: ['Soup chef', 'Recipe guardian', 'Ingredient scout', 'Table host', 'Mystery guest'] },
-      { name: 'Marshmallow Weather Balloon', roles: ['Balloon pilot', 'Candy scientist', 'Cloud tracker', 'Basket mechanic', 'Launch spectator'] },
-      { name: 'Abandoned Mall Petting Zoo', roles: ['Animal caretaker', 'Feed mixer', 'Lost shopper', 'Fence inspector', 'Tour volunteer'] },
-      { name: 'Candlelit Bowling Alley', roles: ['Lane mechanic', 'Scorekeeper', 'Candle replacer', 'Snack server', 'League bowler'] },
-      { name: 'Secret Elevator Museum', roles: ['Lift operator', 'Floor historian', 'Button polisher', 'Museum guard', 'Museum guest'] },
-      { name: 'Lunar Garden Center', roles: ['Moon gardener', 'Oxygen monitor', 'Seedling scientist', 'Suit mechanic', 'Garden visitor'] },
-      { name: 'Tiny Island Airport', roles: ['Baggage handler', 'Island pilot', 'Weather observer', 'Ticket agent', 'Waiting traveler'] },
-      { name: 'Noodle-Making Arcade', roles: ['Noodle chef', 'Game attendant', 'Dough technician', 'Prize counter clerk', 'Arcade champion'] },
-      { name: 'Secret Squirrel Bank', roles: ['Vault keeper', 'Nut counter', 'Security guard', 'Branch manager', 'Customer'] },
-      { name: 'Glowworm Campground', roles: ['Camp host', 'Tent fixer', 'Trail guide', 'Marshmallow roaster', 'New camper'] },
-      { name: 'Museum of Lost Buttons', roles: ['Button curator', 'Display maker', 'Collector', 'Security guard', 'School visitor'] },
-      { name: 'Upside-Down Bakery', roles: ['Ceiling baker', 'Tray catcher', 'Recipe tester', 'Oven inspector', 'Bakery customer'] },
-      { name: 'Indoor Tide Pool', roles: ['Tide keeper', 'Shell guide', 'Pool cleaner', 'Crab spotter', 'Family visitor'] },
-      { name: 'Cactus Roller Disco', roles: ['Disco DJ', 'Skate instructor', 'Cactus caretaker', 'Ticket checker', 'Roller dancer'] },
-      { name: 'Secret Kite Control Room', roles: ['Wind analyst', 'String operator', 'Signal caller', 'Map reader', 'Flight observer'] },
-      { name: 'Midnight Cereal Museum', roles: ['Cereal archivist', 'Milk sommelier', 'Box designer', 'Night guard', 'Museum guest'] },
-      { name: 'Pigeon Chess Club', roles: ['Chess coach', 'Clock keeper', 'Seed server', 'Tournament judge', 'New player'] },
-      { name: 'Rainy Day Observatory', roles: ['Cloud astronomer', 'Lens polisher', 'Rain gauge reader', 'Night guard', 'Curious student'] },
-      { name: 'Secret Blanket Fort Clinic', roles: ['Fort doctor', 'Bandage folder', 'Waiting patient', 'Quiet nurse', 'Tea attendant'] },
-      { name: 'Windmill Puzzle Farm', roles: ['Puzzle farmer', 'Windmill mechanic', 'Harvest planner', 'Puzzle courier', 'Farm visitor'] },
-      { name: 'Glow-in-the-Dark Aquarium', roles: ['Glow tank diver', 'Light technician', 'Night guide', 'Fish feeder', 'After-hours guest'] },
-      { name: 'Secret Pancake Observatory', roles: ['Pancake astronomer', 'Telescope chef', 'Night server', 'Star mapper', 'Breakfast guest'] }
+      { name: 'Eiffel Tower', roles: ['Tour guide', 'Visitor', 'Elevator operator', 'Security guard', 'Maintenance worker', 'Ticket attendant', 'Photographer', 'Restaurant server', 'Souvenir seller'] },
+      { name: 'Statue of Liberty', roles: ['Park ranger', 'Visitor', 'Tour guide', 'Ferry captain', 'Security officer', 'Ticket attendant', 'Photographer', 'Museum curator', 'Maintenance worker'] },
+      { name: 'Great Wall of China', roles: ['Tour guide', 'Visitor', 'Hiker', 'Site guard', 'Restoration worker', 'Photographer', 'Ticket attendant', 'Researcher', 'Souvenir seller'] },
+      { name: 'Colosseum', roles: ['Tour guide', 'Visitor', 'Archaeologist', 'Ticket attendant', 'Security guard', 'Conservator', 'Photographer', 'Historian', 'Maintenance worker'] },
+      { name: 'Taj Mahal', roles: ['Tour guide', 'Visitor', 'Gardener', 'Security guard', 'Conservator', 'Photographer', 'Ticket attendant', 'Cleaner', 'Historian'] },
+      { name: 'Pyramids of Giza', roles: ['Tour guide', 'Visitor', 'Archaeologist', 'Site guard', 'Photographer', 'Camel handler', 'Researcher', 'Ticket attendant', 'Conservator'] },
+      { name: 'Machu Picchu', roles: ['Tour guide', 'Visitor', 'Park ranger', 'Archaeologist', 'Hiker', 'Conservator', 'Photographer', 'Ticket attendant', 'Trail worker'] },
+      { name: 'Sydney Opera House', roles: ['Performer', 'Stage manager', 'Usher', 'Audience member', 'Sound technician', 'Ticket seller', 'Tour guide', 'Lighting technician', 'Security guard'] },
+      { name: 'Golden Gate Bridge', roles: ['Bridge painter', 'Maintenance worker', 'Cyclist', 'Tourist', 'Bridge inspector', 'Engineer', 'Photographer', 'Police officer', 'Traffic worker'] },
+      { name: 'Grand Canyon', roles: ['Park ranger', 'Hiker', 'Tour guide', 'Photographer', 'Geologist', 'Camper', 'Rafting guide', 'Trail worker', 'Visitor'] },
+      { name: 'Niagara Falls', roles: ['Visitor', 'Boat captain', 'Tour guide', 'Park ranger', 'Photographer', 'Boat crew member', 'Ticket attendant', 'Maintenance worker', 'Souvenir seller'] },
+      { name: 'Mount Fuji', roles: ['Hiker', 'Mountain guide', 'Visitor', 'Mountain hut worker', 'Photographer', 'Park ranger', 'Trail worker', 'Rescue worker', 'Climbing instructor'] },
+      { name: 'Stonehenge', roles: ['Visitor', 'Tour guide', 'Archaeologist', 'Site guard', 'Conservator', 'Historian', 'Ticket attendant', 'Photographer', 'Groundskeeper'] },
+      { name: 'The Louvre', roles: ['Curator', 'Visitor', 'Security guard', 'Tour guide', 'Art conservator', 'Ticket attendant', 'Art student', 'Cleaner', 'Exhibit technician'] },
+      { name: 'Buckingham Palace', roles: ['Palace guard', 'Visitor', 'Tour guide', 'Gardener', 'Maintenance worker', 'Chef', 'Housekeeper', 'Security officer', 'Ticket attendant'] },
+      { name: 'Times Square', roles: ['Tourist', 'Shop worker', 'Street performer', 'Police officer', 'Photographer', 'Food vendor', 'Theater usher', 'Taxi driver', 'Billboard technician'] },
+      { name: 'Central Park', roles: ['Jogger', 'Gardener', 'Dog walker', 'Visitor', 'Park ranger', 'Cyclist', 'Photographer', 'Maintenance worker', 'Tour guide'] },
+      { name: 'Mount Everest Base Camp', roles: ['Climber', 'Mountain guide', 'Expedition cook', 'Doctor', 'Camp manager', 'Porter', 'Photographer', 'Rescue worker', 'Equipment technician'] },
+      { name: 'Great Barrier Reef', roles: ['Diver', 'Marine biologist', 'Boat captain', 'Snorkeling guide', 'Visitor', 'Dive instructor', 'Boat crew member', 'Photographer', 'Reef researcher'] },
+      { name: 'Christ the Redeemer', roles: ['Tourist', 'Tour guide', 'Security guard', 'Maintenance worker', 'Photographer', 'Ticket attendant', 'Cleaner', 'Site manager', 'Conservator'] },
+      { name: 'Airport', roles: ['Pilot', 'Flight attendant', 'Gate agent', 'Security officer', 'Passenger', 'Baggage handler', 'Air traffic controller', 'Cleaner', 'Aircraft mechanic'] },
+      { name: 'Train Station', roles: ['Train conductor', 'Ticket agent', 'Commuter', 'Station cleaner', 'Security officer', 'Train driver', 'Station manager', 'Maintenance worker', 'Vendor'] },
+      { name: 'Hospital', roles: ['Doctor', 'Nurse', 'Patient', 'Receptionist', 'Paramedic', 'Surgeon', 'Radiologist', 'Cleaner', 'Visitor'] },
+      { name: 'School', roles: ['Teacher', 'Student', 'Principal', 'School nurse', 'Custodian', 'Librarian', 'Counselor', 'Cafeteria worker', 'Teaching assistant'] },
+      { name: 'Library', roles: ['Librarian', 'Student', 'Visitor', 'Library assistant', 'Custodian', 'Archivist', 'Security guard', 'Researcher', 'Children\u2019s librarian'] },
+      { name: 'Grocery Store', roles: ['Cashier', 'Shopper', 'Stock clerk', 'Store manager', 'Produce worker', 'Butcher', 'Baker', 'Delivery driver', 'Security guard'] },
+      { name: 'Restaurant', roles: ['Chef', 'Server', 'Customer', 'Host', 'Dishwasher', 'Bartender', 'Restaurant manager', 'Line cook', 'Food supplier'] },
+      { name: 'Coffee Shop', roles: ['Barista', 'Customer', 'Cashier', 'Manager', 'Delivery driver', 'Baker', 'Cleaner', 'Coffee supplier', 'Shift supervisor'] },
+      { name: 'Bakery', roles: ['Baker', 'Cake decorator', 'Cashier', 'Customer', 'Delivery driver', 'Pastry chef', 'Bakery assistant', 'Cleaner', 'Manager'] },
+      { name: 'Hotel', roles: ['Receptionist', 'Guest', 'Housekeeper', 'Concierge', 'Bellhop', 'Manager', 'Chef', 'Maintenance worker', 'Security guard'] },
+      { name: 'Movie Theater', roles: ['Ticket attendant', 'Moviegoer', 'Concession worker', 'Projectionist', 'Cleaner', 'Manager', 'Usher', 'Security guard', 'Technician'] },
+      { name: 'Museum', roles: ['Curator', 'Visitor', 'Tour guide', 'Security guard', 'Exhibit technician', 'Conservator', 'Researcher', 'Ticket attendant', 'Cleaner'] },
+      { name: 'Zoo', roles: ['Zookeeper', 'Veterinarian', 'Visitor', 'Tour guide', 'Ticket attendant', 'Animal nutritionist', 'Groundskeeper', 'Educator', 'Maintenance worker'] },
+      { name: 'Aquarium', roles: ['Aquarist', 'Visitor', 'Marine biologist', 'Tour guide', 'Maintenance worker', 'Veterinarian', 'Ticket attendant', 'Diver', 'Educator'] },
+      { name: 'Beach', roles: ['Lifeguard', 'Swimmer', 'Surfer', 'Beach cleaner', 'Visitor', 'Surf instructor', 'Food vendor', 'Photographer', 'Park ranger'] },
+      { name: 'Swimming Pool', roles: ['Lifeguard', 'Swimmer', 'Swim instructor', 'Pool cleaner', 'Receptionist', 'Swimming coach', 'Maintenance technician', 'Parent', 'Pool manager'] },
+      { name: 'Gym', roles: ['Personal trainer', 'Gym member', 'Receptionist', 'Fitness instructor', 'Cleaner', 'Manager', 'Equipment technician', 'Yoga teacher', 'Physical therapist'] },
+      { name: 'Fire Station', roles: ['Firefighter', 'Fire captain', 'Paramedic', 'Dispatcher', 'Equipment technician', 'Fire inspector', 'Driver', 'Training officer', 'Station cook'] },
+      { name: 'Police Station', roles: ['Police officer', 'Detective', 'Dispatcher', 'Receptionist', 'Visitor', 'Sergeant', 'Evidence technician', 'Lawyer', 'Custodian'] },
+      { name: 'Post Office', roles: ['Postal clerk', 'Mail carrier', 'Customer', 'Mail sorter', 'Manager', 'Delivery driver', 'Postal inspector', 'Maintenance worker', 'Security guard'] },
+      { name: 'Bank', roles: ['Bank teller', 'Customer', 'Loan officer', 'Branch manager', 'Security guard', 'Financial adviser', 'Accountant', 'Cash handler', 'Auditor'] },
+      { name: 'Shopping Mall', roles: ['Shopper', 'Store clerk', 'Security guard', 'Cleaner', 'Food court worker', 'Mall manager', 'Maintenance worker', 'Delivery driver', 'Cashier'] },
+      { name: 'Farmers Market', roles: ['Farmer', 'Shopper', 'Vendor', 'Market manager', 'Food seller', 'Baker', 'Florist', 'Cashier', 'Delivery driver'] },
+      { name: 'Farm', roles: ['Farmer', 'Farm worker', 'Veterinarian', 'Delivery driver', 'Farm manager', 'Tractor operator', 'Crop inspector', 'Agronomist', 'Equipment mechanic'] },
+      { name: 'Campground', roles: ['Camper', 'Camp host', 'Park ranger', 'Hiker', 'Maintenance worker', 'Receptionist', 'Groundskeeper', 'Tour guide', 'Cleaner'] },
+      { name: 'Amusement Park', roles: ['Ride operator', 'Visitor', 'Ticket attendant', 'Food vendor', 'Maintenance worker', 'Security guard', 'Mascot performer', 'Park manager', 'Cleaner'] },
+      { name: 'Bowling Alley', roles: ['Bowler', 'Receptionist', 'Snack bar worker', 'Maintenance technician', 'Coach', 'Shoe rental clerk', 'Manager', 'Cleaner', 'League organizer'] },
+      { name: 'Stadium', roles: ['Athlete', 'Spectator', 'Coach', 'Ticket attendant', 'Security guard', 'Referee', 'Groundskeeper', 'Food vendor', 'Announcer'] },
+      { name: 'Concert Hall', roles: ['Musician', 'Audience member', 'Usher', 'Sound technician', 'Stage manager', 'Conductor', 'Ticket attendant', 'Lighting technician', 'Security guard'] },
+      { name: 'Theater', roles: ['Actor', 'Audience member', 'Director', 'Stage manager', 'Usher', 'Costume designer', 'Lighting technician', 'Ticket attendant', 'Set builder'] },
+      { name: 'Hair Salon', roles: ['Hair stylist', 'Customer', 'Receptionist', 'Salon assistant', 'Salon owner', 'Colorist', 'Barber', 'Cleaner', 'Product supplier'] },
+      { name: 'Dentist Office', roles: ['Dentist', 'Dental hygienist', 'Patient', 'Receptionist', 'Dental assistant', 'Office manager', 'Dental technician', 'Cleaner', 'Delivery driver'] },
+      { name: 'Pharmacy', roles: ['Pharmacist', 'Pharmacy technician', 'Customer', 'Cashier', 'Delivery driver', 'Store manager', 'Stock clerk', 'Security guard', 'Cleaner'] },
+      { name: 'Laundromat', roles: ['Customer', 'Attendant', 'Repair technician', 'Cleaner', 'Owner', 'Laundry worker', 'Delivery driver', 'Machine supplier', 'Manager'] },
+      { name: 'Car Repair Shop', roles: ['Mechanic', 'Customer', 'Service adviser', 'Shop owner', 'Parts supplier', 'Apprentice mechanic', 'Tow truck driver', 'Inspector', 'Receptionist'] },
+      { name: 'Gas Station', roles: ['Cashier', 'Customer', 'Delivery driver', 'Station manager', 'Cleaner', 'Stock clerk', 'Fuel tanker driver', 'Maintenance technician', 'Security guard'] },
+      { name: 'Office', roles: ['Manager', 'Receptionist', 'Accountant', 'Office worker', 'IT technician', 'Cleaner', 'Human resources officer', 'Security guard', 'Delivery driver'] },
+      { name: 'Construction Site', roles: ['Builder', 'Electrician', 'Plumber', 'Site manager', 'Safety inspector', 'Architect', 'Crane operator', 'Surveyor', 'Carpenter'] },
+      { name: 'Cruise Ship', roles: ['Captain', 'Passenger', 'Crew member', 'Chef', 'Entertainment host', 'Housekeeper', 'Engineer', 'Lifeguard', 'Doctor'] },
+      { name: 'University', roles: ['Professor', 'Student', 'Librarian', 'Researcher', 'Administrator', 'Teaching assistant', 'Custodian', 'Security guard', 'Academic adviser'] }
     ];
 
     const MIN_PLAYERS = 3;
@@ -423,7 +431,7 @@
       const team = byId('teamList');
       team.replaceChildren();
       const roomPlayers = activeRoom?.players || [];
-      byId('teamBadge').textContent = `${roomPlayers.length} ONLINE`;
+      byId('teamBadge').textContent = `${roomPlayers.length} ONLINE${activeRoom?.spectatorCount ? ` · ${activeRoom.spectatorCount} WATCHING` : ''}`;
       if (!roomPlayers.length) {
         const empty = document.createElement('div');
         empty.className = 'team-line';
@@ -462,10 +470,15 @@
     function updateSetupState() {
       const playerCount = activeRoom?.players.length || 0;
       const isHost = Boolean(activeRoom?.isHost);
+      const isSpectator = Boolean(activeRoom?.isSpectator);
       const hasFinishedRound = activeRound?.status === 'finished';
       byId('startMission').disabled = !isHost || playerCount < MIN_PLAYERS || Boolean(activeRound && !hasFinishedRound);
+      byId('abortGame').hidden = !isHost || !activeRound || hasFinishedRound;
+      byId('leaveRound').hidden = !activeRoom || !activeRound;
       byId('startMission').textContent = !activeRoom
         ? 'Create or join a room'
+        : isSpectator
+          ? 'Spectating'
         : hasFinishedRound
           ? 'Start next round'
           : activeRound
@@ -475,7 +488,7 @@
       byId('sideTimer').textContent = formatTime(playerCount * 60);
       byId('mainTimer').textContent = formatTime(playerCount * 60);
       byId('sideTimerCaption').textContent = playerCount ? `60 seconds per agent · ${playerCount} agents` : '60 seconds per agent';
-      byId('panelStatus').textContent = !activeRoom ? 'CREATE OR JOIN' : playerCount < MIN_PLAYERS ? 'NEED 3 AGENTS' : isHost ? 'READY TO START' : 'WAITING FOR HOST';
+      byId('panelStatus').textContent = !activeRoom ? 'CREATE OR JOIN' : isSpectator ? 'WATCHING' : playerCount < MIN_PLAYERS ? 'NEED 3 AGENTS' : isHost ? 'READY TO START' : 'WAITING FOR HOST';
     }
 
     function setRoomMessage(message, isError = false) {
@@ -499,7 +512,7 @@
       activeRound = round;
       byId('roomSession').hidden = false;
       byId('roomCodeDisplay').textContent = room.code;
-      byId('roomBadge').textContent = `${room.players.length} / ${MAX_PLAYERS} ONLINE`;
+      byId('roomBadge').textContent = `${room.players.length} / ${MAX_PLAYERS} ONLINE${room.spectatorCount ? ` · ${room.spectatorCount} WATCHING` : ''}`;
       byId('roomBadge').classList.toggle('room-full', room.players.length >= MAX_PLAYERS);
       const roster = byId('roomRoster');
       roster.replaceChildren();
@@ -517,9 +530,10 @@
       byId('roomCodeInput').disabled = true;
       byId('createRoom').disabled = true;
       byId('joinRoom').disabled = true;
+      byId('watchRoom').disabled = true;
       renderTeamList();
       updateSetupState();
-      setRoomMessage('Online room ready. The host can start when 3 agents have joined.');
+      setRoomMessage(room.isSpectator ? 'You are watching this room.' : 'Online room ready. The host can start when 3 agents have joined.');
       if (round) {
         renderOnlineRound(round, room);
       } else {
@@ -562,13 +576,14 @@
       reveal.replaceChildren();
       const role = document.createElement('div');
       role.className = 'role-title';
-      role.textContent = round.isSpy ? 'You are the Mole' : round.role;
+      role.textContent = room.isSpectator ? 'You are spectating' : round.isSpy ? 'You are the Mole' : round.role;
       const location = document.createElement('div');
       location.className = 'role-location';
-      location.textContent = round.isSpy ? 'You do not know the location. Blend in and guess when ready.' : `Your location is ${round.location}.`;
+      location.textContent = room.isSpectator ? 'The location and roles are hidden until the debrief.' : round.isSpy ? 'You do not know the location. Blend in and guess when ready.' : `Your location is ${round.location}.`;
       const tip = document.createElement('div');
       tip.className = 'role-tip';
-      tip.textContent = round.isSpy ? 'Only you can submit a location guess.' : 'Keep your answers natural. Do not name the location outright.';
+      tip.textContent = room.isSpectator ? 'You can watch the round and vote counts.' : round.isSpy ? 'Only you can submit a location guess.' : 'Keep your answers natural. Do not name the location outright.';
+      byId('onlineRoleHeading').textContent = room.isSpectator ? 'Spectator view' : 'Your private role';
       reveal.append(role, location, tip);
       reveal.classList.add('is-visible');
 
@@ -577,7 +592,8 @@
       const isHost = room.isHost;
       byId('pauseTimer').textContent = round.paused ? 'Resume' : 'Pause';
       byId('pauseTimer').disabled = !isHost || round.status !== 'playing';
-      byId('resetTimer').disabled = !isHost || round.status === 'finished';
+      byId('resetTimer').disabled = !isHost || round.status !== 'playing';
+      if (round.status !== 'playing' && byId('guessDialog').open) byId('guessDialog').close();
       byId('accusationArea').hidden = round.status !== 'voting';
       byId('resultPanel').hidden = round.status !== 'finished';
       byId('newMission').disabled = !isHost;
@@ -590,6 +606,7 @@
           const option = document.createElement('button');
           option.className = `vote-option${round.myVoteId === player.id ? ' is-selected' : ''}`;
           option.type = 'button';
+          option.disabled = room.isSpectator;
           option.setAttribute('aria-pressed', String(round.myVoteId === player.id));
           const name = document.createElement('span');
           name.textContent = player.name;
@@ -602,13 +619,13 @@
           voteGrid.append(option);
         });
         const currentVote = room.players.find((player) => player.id === round.myVoteId);
-        byId('voteStatus').textContent = currentVote
+        byId('voteStatus').textContent = room.isSpectator ? 'Spectators cannot vote.' : currentVote
           ? `Your current vote: ${currentVote.name}. Click another agent to change it.`
           : 'Your vote is not submitted yet.';
       }
 
       if (round.status === 'finished' && round.result) {
-        byId('resultTitle').textContent = round.result.winner === 'spy' ? 'The mole got away.' : 'Mole neutralized.';
+        byId('resultTitle').textContent = round.result.winner === 'none' ? 'Game aborted.' : round.result.winner === 'spy' ? 'The mole got away.' : 'Mole neutralized.';
         byId('resultDetail').textContent = round.result.reason;
         byId('resultLocation').textContent = `THE LOCATION WAS ${round.result.location.toUpperCase()} · THE MOLE WAS ${round.result.spy.toUpperCase()}`;
       }
@@ -645,11 +662,18 @@
       byId('roomCodeInput').disabled = false;
       byId('createRoom').disabled = false;
       byId('joinRoom').disabled = false;
+      byId('watchRoom').disabled = false;
+      if (byId('guessDialog').open) byId('guessDialog').close();
       byId('lobbyView').hidden = false;
       byId('roundView').hidden = true;
       byId('mainPanelTitle').textContent = 'Online lobby';
       byId('headerStatus').textContent = 'Briefing room ready';
       byId('timerBadge').textContent = 'STANDBY';
+      byId('pauseTimer').disabled = true;
+      byId('resetTimer').disabled = true;
+      byId('pauseTimer').textContent = 'Pause';
+      byId('sideTimer').style.color = '';
+      byId('mainTimer').style.color = '';
       renderTeamList();
       updateSetupState();
       setRoomMessage(message);
@@ -672,29 +696,31 @@
       byId('createRoom').disabled = true;
       try {
         const result = await roomRequest('/api/rooms', { method: 'POST', body: JSON.stringify({ name }) });
-        connectToRoom(result.room, result.playerId);
+        connectToRoom(result.room, result.playerId, result.round);
       } catch (error) {
         setRoomMessage(error.message, true);
         byId('createRoom').disabled = false;
       }
     }
 
-    async function joinOnlineRoom() {
+    async function joinOnlineRoom(asSpectator = false) {
       const name = byId('roomPlayerName').value.trim();
       const code = byId('roomCodeInput').value.trim().toUpperCase();
       if (!name) return setRoomMessage('Enter your agent name first.', true);
       if (!/^[A-HJ-NP-Z2-9]{6}$/.test(code)) return setRoomMessage('Enter a valid six-character room code.', true);
       byId('joinRoom').disabled = true;
+      byId('watchRoom').disabled = true;
       try {
         const playerId = sessionStorage.getItem(`molePatrolRoom:${code}`);
         const result = await roomRequest(`/api/rooms/${code}/join`, {
           method: 'POST',
-          body: JSON.stringify({ name, playerId })
+          body: JSON.stringify({ name, playerId, spectator: asSpectator })
         });
-        connectToRoom(result.room, result.playerId);
+        connectToRoom(result.room, result.playerId, result.round);
       } catch (error) {
         setRoomMessage(error.message, true);
         byId('joinRoom').disabled = false;
+        byId('watchRoom').disabled = false;
       }
     }
 
@@ -722,7 +748,6 @@
       try {
         const query = new URLSearchParams({ playerId });
         const result = await roomRequest(`/api/rooms/${code}?${query}`);
-        if (!result.room.players.some((player) => player.id === playerId)) throw new Error('You are no longer in this room.');
         connectToRoom(result.room, playerId, result.round);
       } catch (error) {
         disconnectFromRoom(error.message);
@@ -757,6 +782,19 @@
       }
     }
 
+    async function abortOnlineGame() {
+      if (!activeRoom || !activeRoomPlayerId || !window.confirm('Abort this game for everyone? The location and mole will be revealed.')) return;
+      try {
+        const result = await roomRequest(`/api/rooms/${activeRoom.code}/abort`, {
+          method: 'POST',
+          body: JSON.stringify({ playerId: activeRoomPlayerId })
+        });
+        renderOnlineRoom(result.room, result.round);
+      } catch (error) {
+        byId('headerStatus').textContent = error.message;
+      }
+    }
+
     async function submitOnlineGuess(locationName) {
       if (!activeRoom || !activeRoomPlayerId) return;
       try {
@@ -770,12 +808,12 @@
       }
     }
 
-    async function submitOnlineVote(accusedSeatId) {
+    async function submitOnlineVote(accusedId) {
       if (!activeRoom || !activeRoomPlayerId) return;
       try {
         const result = await roomRequest(`/api/rooms/${activeRoom.code}/vote`, {
           method: 'POST',
-          body: JSON.stringify({ playerId: activeRoomPlayerId, accusedSeatId })
+          body: JSON.stringify({ playerId: activeRoomPlayerId, accusedId })
         });
         renderOnlineRoom(result.room, result.round);
       } catch (error) {
@@ -807,7 +845,10 @@
     }
 
     byId('createRoom').addEventListener('click', createOnlineRoom);
-    byId('joinRoom').addEventListener('click', joinOnlineRoom);
+    byId('joinRoom').addEventListener('click', () => joinOnlineRoom());
+    byId('watchRoom').addEventListener('click', () => joinOnlineRoom(true));
+    byId('abortGame').addEventListener('click', abortOnlineGame);
+    byId('leaveRound').addEventListener('click', leaveOnlineRoom);
     byId('roomCodeInput').addEventListener('input', (event) => {
       event.target.value = event.target.value.toUpperCase().replace(/[^A-HJ-NP-Z2-9]/g, '').slice(0, 6);
     });
