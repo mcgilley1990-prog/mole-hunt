@@ -10,6 +10,7 @@ const port = Number(process.env.PORT) || 3000;
 const rooms = new Map();
 const roomCodeAlphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const maxPlayersPerRoom = 10;
+const maxSpectatorsPerRoom = 20;
 const roundSecondsPerPlayer = Math.max(1, Number.parseInt(process.env.ROUND_SECONDS_PER_PLAYER, 10) || 60);
 const accusationVoteSeconds = Math.max(1, Number.parseInt(process.env.ACCUSATION_VOTE_SECONDS, 10) || 60);
 const playerHeartbeatTimeout = 2 * 60_000;
@@ -42,6 +43,8 @@ function serializeRoom(room, viewerId) {
   return {
     code: room.code,
     isHost: room.hostId === viewerId,
+    isSpectator: room.spectators.some((spectator) => spectator.id === viewerId),
+    spectatorCount: room.spectators.length,
     players: room.players.map(({ id, seatId, name }) => ({ id: seatId, name, isHost: id === room.hostId }))
   };
 }
@@ -107,7 +110,7 @@ function serializeRound(room, playerId) {
     locations: round.locationChoices.map(({ name }) => name),
     role,
     isSpy: playerId === round.spyId,
-    location: playerId === round.spyId ? null : round.location.name,
+    location: !getRoomPlayer(room, playerId) || playerId === round.spyId ? null : round.location.name,
     secondsPerPlayer: roundSecondsPerPlayer,
     accusationVoteSeconds,
     remainingSeconds: Math.ceil(millisecondsRemaining / 1000),
@@ -152,6 +155,7 @@ function finishRound(room, winner, reason) {
 function pruneInactivePlayers(room) {
   const cutoff = Date.now() - playerHeartbeatTimeout;
   room.players = room.players.filter((player) => player.lastSeen >= cutoff);
+  room.spectators = room.spectators.filter((spectator) => spectator.lastSeen >= cutoff);
   if (!room.players.some((player) => player.id === room.hostId)) {
     room.hostId = room.players[0]?.id ?? null;
   }
@@ -172,6 +176,7 @@ app.post('/api/rooms', (request, response) => {
     code,
     hostId: playerId,
     players: [{ id: playerId, seatId: randomUUID(), name, lastSeen: now }],
+    spectators: [],
     round: null,
     lastActivity: now
   };
@@ -186,24 +191,33 @@ app.post('/api/rooms/:code/join', (request, response) => {
     return response.status(404).json({ error: 'Room not found. Check the code or create a new room.' });
   }
 
-  updateRoundStatus(room);
-  if (room.round && ['playing', 'voting'].includes(room.round.status)) {
-    return response.status(409).json({ error: 'A round is already active. Join after the debrief.' });
-  }
-
   const name = normalizePlayerName(request.body?.name);
   if (!name) return response.status(400).json({ error: 'Enter an agent name to join.' });
   pruneInactivePlayers(room);
 
   const requestedId = typeof request.body?.playerId === 'string' ? request.body.playerId : '';
+  if (request.body?.spectator === true) {
+    let spectator = room.spectators.find((entry) => entry.id === requestedId);
+    if (!spectator) {
+      if (room.spectators.length >= maxSpectatorsPerRoom) return response.status(409).json({ error: 'This room already has 20 spectators.' });
+      spectator = { id: randomUUID(), name, lastSeen: Date.now() };
+      room.spectators.push(spectator);
+    }
+    spectator.name = name;
+    spectator.lastSeen = Date.now();
+    room.lastActivity = Date.now();
+    return response.status(201).json({ room: serializeRoom(room, spectator.id), playerId: spectator.id, round: serializeRound(room, spectator.id) });
+  }
   const existingPlayer = room.players.find((player) => player.id === requestedId);
   if (existingPlayer) {
     existingPlayer.name = name;
     existingPlayer.lastSeen = Date.now();
     room.lastActivity = Date.now();
-    return response.json({ room: serializeRoom(room, existingPlayer.id), playerId: existingPlayer.id });
+    return response.json({ room: serializeRoom(room, existingPlayer.id), playerId: existingPlayer.id, round: serializeRound(room, existingPlayer.id) });
   }
 
+  updateRoundStatus(room);
+  if (room.round && room.round.status !== 'finished') return response.status(409).json({ error: 'A round is already active. Join after the debrief.' });
   if (room.players.length >= maxPlayersPerRoom) {
     return response.status(409).json({ error: 'This room already has 10 agents.' });
   }
@@ -212,7 +226,7 @@ app.post('/api/rooms/:code/join', (request, response) => {
   const now = Date.now();
   room.players.push({ id: playerId, seatId: randomUUID(), name, lastSeen: now });
   room.lastActivity = now;
-  return response.status(201).json({ room: serializeRoom(room, playerId), playerId });
+  return response.status(201).json({ room: serializeRoom(room, playerId), playerId, round: serializeRound(room, playerId) });
 });
 
 app.get('/api/rooms/:code', (request, response) => {
@@ -223,7 +237,7 @@ app.get('/api/rooms/:code', (request, response) => {
   }
 
   const playerId = String(request.query.playerId || '');
-  const player = room.players.find((entry) => entry.id === playerId);
+  const player = room.players.find((entry) => entry.id === playerId) || room.spectators.find((entry) => entry.id === playerId);
   if (!player) return response.status(403).json({ error: 'Join this room before viewing its game.' });
   player.lastSeen = Date.now();
   room.lastActivity = Date.now();
@@ -326,7 +340,7 @@ app.post('/api/rooms/:code/guess', (request, response) => {
   finishRound(room, correct ? 'spy' : 'agents', correct
     ? 'The mole correctly identified the hidden location.'
     : `The mole guessed ${guess} and missed.`);
-  return response.json({ room: serializeRoom(room), round: serializeRound(room, playerId) });
+  return response.json({ room: serializeRoom(room, playerId), round: serializeRound(room, playerId) });
 });
 
 app.post('/api/rooms/:code/vote', (request, response) => {
@@ -340,12 +354,23 @@ app.post('/api/rooms/:code/vote', (request, response) => {
   updateRoundStatus(room);
   if (round.status !== 'voting') return response.status(409).json({ error: 'Voting opens when the round timer expires.' });
 
-  const accusedSeatId = String(request.body?.accusedSeatId || '');
-  const accused = room.players.find((player) => player.seatId === accusedSeatId);
+  const accusedId = String(request.body?.accusedId || request.body?.accusedSeatId || '');
+  const accused = room.players.find((player) => player.seatId === accusedId);
   if (!accused) return response.status(400).json({ error: 'Choose an agent in this room.' });
 
   round.votesByPlayer[playerId] = accused.id;
   room.lastActivity = Date.now();
+  return response.json({ room: serializeRoom(room, playerId), round: serializeRound(room, playerId) });
+});
+
+app.post('/api/rooms/:code/abort', (request, response) => {
+  const room = findRoom(request.params.code);
+  if (!room) return response.status(404).json({ error: 'Room not found.' });
+  const playerId = String(request.body?.playerId || '');
+  if (!getRoomPlayer(room, playerId) || room.hostId !== playerId) return response.status(403).json({ error: 'Only the host can abort the game.' });
+  updateRoundStatus(room);
+  if (!room.round || room.round.status === 'finished') return response.status(409).json({ error: 'There is no active game to abort.' });
+  finishRound(room, 'none', 'The host aborted the game.');
   return response.json({ room: serializeRoom(room, playerId), round: serializeRound(room, playerId) });
 });
 
@@ -355,6 +380,7 @@ app.post('/api/rooms/:code/leave', (request, response) => {
 
   const playerId = String(request.body?.playerId || '');
   room.players = room.players.filter((player) => player.id !== playerId);
+  room.spectators = room.spectators.filter((spectator) => spectator.id !== playerId);
   if (room.players.length === 0) {
     rooms.delete(room.code);
   } else {
